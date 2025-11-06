@@ -98,4 +98,4 @@ async def _fetch_and_cache_collections(authData: str = ""):
     # Build cache: {name: id}
     _collections_cache = {}
     for collection in data.get("collections", []):
-        _collections_cache[collection["name"]] = collection["id"]
+        _collections_cache[cap(collection["name"])] = collection["id"]
