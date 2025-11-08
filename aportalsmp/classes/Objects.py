@@ -1,5 +1,3 @@
-from ..utils.functions import cap
-
 class PortalsGift:
     def __init__(self, data: dict):
         self.__dict__ = data
@@ -284,13 +282,13 @@ class Filters:
         return self.__dict__
 
     def model(self, name: str):
-        return float(self.__dict__.get("models", {}).get(cap(name), 0))
+        return float(self.__dict__.get("models", {}).get(name, 0))
 
     def symbol(self, name: str):
-        return float(self.__dict__.get("symbols", {}).get(cap(name), 0))
-    
+        return float(self.__dict__.get("symbols", {}).get(name, 0))
+
     def backdrop(self, name: str):
-        return float(self.__dict__.get("backdrops", {}).get(cap(name), 0))
+        return float(self.__dict__.get("backdrops", {}).get(name, 0))
 
     @property
     def backdrops(self):
@@ -320,7 +318,7 @@ class Collections:
 
     def gift(self, gift_name: str):
         for c in self._collections:
-            if c.get("name") == cap(gift_name):
+            if c.get("name") == gift_name:
                 return CollectionItem(c)
         return None
 

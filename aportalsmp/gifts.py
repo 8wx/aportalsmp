@@ -1,5 +1,5 @@
 from .utils.other import API_URL, HEADERS_MAIN, SORTS
-from .utils.functions import toShortName, cap, listToURL, activityListToURL
+from .utils.functions import toShortName, listToURL, activityListToURL
 from .utils.mapping import get_collection_id, get_collection_ids
 from .handlers import requestExceptionHandler, fetch
 from .classes.Exceptions import authDataError, floorsError, giftsError, tradingError
@@ -161,21 +161,21 @@ async def search(sort: str = "price_asc", offset: int = 0, limit: int = 20, gift
             raise giftsError("aportalsmp: search(): Error: gift_name must be a string or list")
     if model:
         if type(model) == str:
-            URL += f"&filter_by_models={quote_plus(cap(model))}"
+            URL += f"&filter_by_models={quote_plus(model)}"
         elif type(model) == list:
             URL += f"&filter_by_models={listToURL(model)}"
         else:
             raise giftsError("aportalsmp: search(): Error: model must be a string or list")
     if backdrop:
         if type(backdrop) == str:
-            URL += f"&filter_by_backdrops={quote_plus(cap(backdrop))}"
+            URL += f"&filter_by_backdrops={quote_plus(backdrop)}"
         elif type(backdrop) == list:
             URL += f"&filter_by_backdrops={listToURL(backdrop)}"
         else:
             raise giftsError("aportalsmp: search(): Error: backdrop must be a string or list")
     if symbol:
         if type(symbol) == str:
-            URL += f"&filter_by_symbols={quote_plus(cap(symbol))}"
+            URL += f"&filter_by_symbols={quote_plus(symbol)}"
         elif type(symbol) == list:
             URL += f"&filter_by_symbols={listToURL(symbol)}"
         else:
@@ -252,21 +252,21 @@ async def marketActivity(sort: str = "latest", offset: int = 0, limit: int = 20,
             raise giftsError("aportalsmp: marketActivity(): Error: gift_name must be a string or list")
     if model:
         if type(model) == str:
-            URL += f"&filter_by_models={quote_plus(cap(model))}"
+            URL += f"&filter_by_models={quote_plus(model)}"
         elif type(model) == list:
             URL += f"&filter_by_models={listToURL(model)}"
         else:
             raise giftsError("aportalsmp: marketActivity(): Error: model must be a string or list")
     if backdrop:
         if type(backdrop) == str:
-            URL += f"&filter_by_backdrops={quote_plus(cap(backdrop))}"
+            URL += f"&filter_by_backdrops={quote_plus(backdrop)}"
         elif type(backdrop) == list:
             URL += f"&filter_by_backdrops={listToURL(backdrop)}"
         else:
             raise giftsError("aportalsmp: marketActivity(): Error: backdrop must be a string or list")
     if symbol:
         if type(symbol) == str:
-            URL += f"&filter_by_symbols={quote_plus(cap(symbol))}"
+            URL += f"&filter_by_symbols={quote_plus(symbol)}"
         elif type(symbol) == list:
             URL += f"&filter_by_symbols={listToURL(symbol)}"
         else:

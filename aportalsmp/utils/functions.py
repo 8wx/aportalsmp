@@ -1,16 +1,8 @@
 from urllib.parse import quote_plus
 import re
 
-def cap(text) -> str:
-    words = re.findall(r"\w+(?:'\w+)?", text)
-    for word in words:
-        if len(word) > 0:
-            cap = word[0].upper() + word[1:]
-            text = text.replace(word, cap, 1)
-    return text
-
 def listToURL(gifts: list) -> str:
-    return '%2C'.join(quote_plus(cap(gift)) for gift in gifts)
+    return '%2C'.join(quote_plus(gift) for gift in gifts)
 
 def activityListToURL(activity: list) -> str:
     return '%2C'.join(activity)

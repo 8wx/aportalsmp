@@ -1,6 +1,5 @@
 from aportalsmp.handlers import fetch, requestExceptionHandler
 from aportalsmp.utils.other import HEADERS_MAIN
-from aportalsmp.utils.functions import cap
 
 ###########################
 # Collection ID Mapping   #
@@ -30,9 +29,6 @@ async def get_collection_id(gift_name: str, authData: str = "") -> str:
         ValueError: If gift name is not found in available collections
     """
     global _collections_cache
-
-    # Capitalize the gift name to match API format
-    gift_name = cap(gift_name)
 
     # First run: fetch and cache
     if _collections_cache is None:
@@ -98,4 +94,4 @@ async def _fetch_and_cache_collections(authData: str = ""):
     # Build cache: {name: id}
     _collections_cache = {}
     for collection in data.get("collections", []):
-        _collections_cache[cap(collection["name"])] = collection["id"]
+        _collections_cache[collection["name"]] = collection["id"]

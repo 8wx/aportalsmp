@@ -1,3 +1,12 @@
+# Changes Made to original aportalsmp Library in this fork
+
+### v1.3.1
+- Updated the Portals URL (critical). 
+- Migrated from gift_name to Portals' IDs (critical).
+- Migrated from static gift name mappings to dynamic collection ID fetching from the Portals API (future-proofing).
+### v1.4.0
+- Removed cap() function, fixing a long-standing bug (breaking).
+
 [![pypi](https://img.shields.io/pypi/v/aportalsmp.svg)](https://pypi.org/project/aportalsmp/) ![PyPI - Downloads](https://img.shields.io/pypi/dm/aportalsmp) [![stars](https://img.shields.io/github/stars/bleach-hub/aportalsmp?style=social)](https://github.com/bleach-hub/aportalsmp/stargazers) [![Me](https://img.shields.io/badge/Telegram-@perfectlystill-blue?logo=telegram)](https://t.me/perfectlystill) [![Updates & Devs chat](https://img.shields.io/badge/Telegram-@giftsdevs-blue?logo=telegram)](https://t.me/giftsdevs)
 
 # Asynchronous Portals Marketplace API

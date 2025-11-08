@@ -1,4 +1,3 @@
-from .utils.functions import cap
 from .utils.other import API_URL, HEADERS_MAIN
 from .utils.mapping import get_collection_id
 from .classes.Exceptions import authDataError, offerError
