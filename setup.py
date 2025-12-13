@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="aportalsmp",
-    version="1.4.0",
+    version="1.4.1",
     description="Asynchronous API wrapper for Portals Marketplace (fork with dynamic collection mapping)",
     author="bleach (original), 8wx (fork)",
     url="https://github.com/8wx/aportalsmp",

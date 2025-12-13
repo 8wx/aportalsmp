@@ -414,13 +414,16 @@ async def myPortalsGifts(offset: int = 0, limit: int = 20, listed: bool = True, 
 
     return [PortalsGift(nft) for nft in response.json()['nfts']] if "nfts" in response.json() else []
 
-async def myActivity(offset: int = 0, limit: int = 20, authData: str = "") -> list[MyActivity]:
+async def myActivity(offset: int = 0, limit: int = 20, action_types: str | list = "", authData: str = "") -> list[MyActivity]:
     """
     Retrieves the user's activity on the marketplace.
 
     Args:
         offset (int): The pagination offset (limit*page). Defaults to 0.
         limit (int): The maximum number of results to return. Defaults to 20.
+        action_types (str | list): The type(s) of activity to filter by. Can be a single string or list of strings.
+            Valid options: "buy", "sell", "delist", "bundle_purchase", "offer", "listing",
+            "bundle_separated", "bundle_bundled", "bundle_offer", or an empty string for no filter.
         authData (str): The authentication data required for the API request.
 
     Returns:
@@ -428,12 +431,30 @@ async def myActivity(offset: int = 0, limit: int = 20, authData: str = "") -> li
 
     Raises:
         authDataError: If authData is not provided.
+        giftsError: If action_types contains invalid values.
         requestError: If the API request fails or returns a non-200 status code.
     """
     URL = API_URL + "users/actions/" + f"?offset={offset}" + f"&limit={limit}"
 
     if authData == "":
         raise authDataError("aportalsmp: myActivity(): Error: authData is required")
+
+    # Validate and process action_types parameter
+    valid_action_types = ["", "buy", "sell", "delist", "bundle_purchase", "offer", "listing",
+                          "bundle_separated", "bundle_bundled", "bundle_offer"]
+
+    if type(action_types) == str and action_types.lower() not in valid_action_types:
+        raise giftsError(f"aportalsmp: myActivity(): Error: action_types must be one of {valid_action_types}")
+    if type(action_types) == list:
+        # Validate each item in the list
+        for action_type in action_types:
+            if action_type.lower() not in valid_action_types:
+                raise giftsError(f"aportalsmp: myActivity(): Error: action_types must be one of {valid_action_types}")
+        action_types = activityListToURL(action_types)
+
+    # Add action_types to URL if provided
+    if action_types:
+        URL += f"&action_types={action_types}"
 
     HEADERS = {**HEADERS_MAIN, "Authorization": authData}
 
