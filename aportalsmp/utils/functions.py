@@ -8,7 +8,10 @@ def activityListToURL(activity: list) -> str:
     return '%2C'.join(activity)
 
 def toShortName(gift_name: str) -> str:
-    return gift_name.replace(" ", "").replace("'", "").replace("’", "").replace("-", "").lower()
+    """
+    Converts a gift name to a normalized short name by removing all non-alphanumeric characters ("Durov's Cap" -> "durovscap")
+    """
+    return ''.join(char for char in gift_name if char.isalnum()).lower()
 
 def convertForListing(nft_id: str = "", price: float = 0):
     return {"nft_id": nft_id, "price": str(price)}

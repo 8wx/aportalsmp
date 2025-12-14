@@ -8,6 +8,8 @@
 - Removed cap() function, fixing a long-standing bug (breaking).
 ### v1.4.1
 - Added action_types parameter to myActivity() for filtering activities by type.
+### v1.4.2
+- Fixed collection matching to handle curly apostrophes (Portals API is inconsistent).
 
 [![pypi](https://img.shields.io/pypi/v/aportalsmp.svg)](https://pypi.org/project/aportalsmp/) ![PyPI - Downloads](https://img.shields.io/pypi/dm/aportalsmp) [![stars](https://img.shields.io/github/stars/bleach-hub/aportalsmp?style=social)](https://github.com/bleach-hub/aportalsmp/stargazers) [![Me](https://img.shields.io/badge/Telegram-@perfectlystill-blue?logo=telegram)](https://t.me/perfectlystill) [![Updates & Devs chat](https://img.shields.io/badge/Telegram-@giftsdevs-blue?logo=telegram)](https://t.me/giftsdevs)
 
